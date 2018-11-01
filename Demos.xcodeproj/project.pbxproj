@@ -7,21 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D57E3711218A96A000059283 /* ChineseChessBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E3710218A96A000059283 /* ChineseChessBoardView.swift */; };
+		D57E3713218AE44E00059283 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E3712218AE44E00059283 /* Const.swift */; };
 		D5D96E93217FFF80009687BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96E92217FFF80009687BF /* AppDelegate.swift */; };
-		D5D96E95217FFF80009687BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96E94217FFF80009687BF /* ViewController.swift */; };
 		D5D96E98217FFF80009687BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D96E96217FFF80009687BF /* Main.storyboard */; };
 		D5D96E9A217FFF81009687BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D96E99217FFF81009687BF /* Assets.xcassets */; };
 		D5D96E9D217FFF81009687BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D96E9B217FFF81009687BF /* LaunchScreen.storyboard */; };
+		D5D96EA521800108009687BF /* DemosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96EA421800108009687BF /* DemosTableViewController.swift */; };
+		D5D96EA82180115E009687BF /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96EA72180115E009687BF /* SortViewController.swift */; };
+		D5D96EAA21801416009687BF /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96EA921801416009687BF /* SortView.swift */; };
+		D5D96EAC2180146E009687BF /* Array+Sorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96EAB2180146E009687BF /* Array+Sorts.swift */; };
+		D5D96EAE218017B8009687BF /* Algorithm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D96EAD218017B8009687BF /* Algorithm.storyboard */; };
+		D5D96EB121803074009687BF /* AudioVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D96EB021803074009687BF /* AudioVideo.storyboard */; };
+		D5D96EB521806865009687BF /* AVAudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96EB421806865009687BF /* AVAudioPlayerViewController.swift */; };
+		D5D96EB721807112009687BF /* summer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5D96EB621807112009687BF /* summer.mp3 */; };
+		D5E8E65321817D4900A3FE5D /* Chess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65221817D4900A3FE5D /* Chess.storyboard */; };
+		D5E8E65521817D9400A3FE5D /* ChineseChessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8E65421817D9400A3FE5D /* ChineseChessViewController.swift */; };
+		D5E8E66A21819B7200A3FE5D /* 黑卒.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65B21819B7100A3FE5D /* 黑卒.gif */; };
+		D5E8E66B21819B7200A3FE5D /* 红兵.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65C21819B7100A3FE5D /* 红兵.gif */; };
+		D5E8E66C21819B7200A3FE5D /* 黑士.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65D21819B7100A3FE5D /* 黑士.gif */; };
+		D5E8E66D21819B7200A3FE5D /* 红车.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65E21819B7100A3FE5D /* 红车.gif */; };
+		D5E8E66E21819B7200A3FE5D /* 棋盘.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E65F21819B7100A3FE5D /* 棋盘.gif */; };
+		D5E8E66F21819B7200A3FE5D /* 红帅.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66021819B7100A3FE5D /* 红帅.gif */; };
+		D5E8E67021819B7200A3FE5D /* 黒炮.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66121819B7100A3FE5D /* 黒炮.gif */; };
+		D5E8E67121819B7200A3FE5D /* 黑将.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66221819B7100A3FE5D /* 黑将.gif */; };
+		D5E8E67221819B7200A3FE5D /* 红马.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66321819B7100A3FE5D /* 红马.gif */; };
+		D5E8E67321819B7200A3FE5D /* 红炮.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66421819B7100A3FE5D /* 红炮.gif */; };
+		D5E8E67421819B7200A3FE5D /* 红象.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66521819B7100A3FE5D /* 红象.gif */; };
+		D5E8E67521819B7200A3FE5D /* 黑车.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66621819B7100A3FE5D /* 黑车.gif */; };
+		D5E8E67621819B7200A3FE5D /* 红士.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66721819B7100A3FE5D /* 红士.gif */; };
+		D5E8E67721819B7200A3FE5D /* 黑马.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66821819B7200A3FE5D /* 黑马.gif */; };
+		D5E8E67821819B7200A3FE5D /* 黑象.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E66921819B7200A3FE5D /* 黑象.gif */; };
+		D5E8E67C2181B24A00A3FE5D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5E8E67B2181B24A00A3FE5D /* icon.png */; };
+		D5E8E6AA2187EF1E00A3FE5D /* FiveStoneChessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8E6A92187EF1E00A3FE5D /* FiveStoneChessViewController.swift */; };
+		D5E8E6AE2187F88D00A3FE5D /* FiveStoneChessBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8E6AD2187F88D00A3FE5D /* FiveStoneChessBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D57E3710218A96A000059283 /* ChineseChessBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseChessBoardView.swift; sourceTree = "<group>"; };
+		D57E3712218AE44E00059283 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		D5D96E8F217FFF80009687BF /* Demos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D96E92217FFF80009687BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5D96E94217FFF80009687BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D5D96E97217FFF80009687BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5D96E99217FFF81009687BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5D96E9C217FFF81009687BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5D96E9E217FFF81009687BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5D96EA421800108009687BF /* DemosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemosTableViewController.swift; sourceTree = "<group>"; };
+		D5D96EA72180115E009687BF /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		D5D96EA921801416009687BF /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
+		D5D96EAB2180146E009687BF /* Array+Sorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Sorts.swift"; sourceTree = "<group>"; };
+		D5D96EAD218017B8009687BF /* Algorithm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Algorithm.storyboard; sourceTree = "<group>"; };
+		D5D96EB021803074009687BF /* AudioVideo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AudioVideo.storyboard; sourceTree = "<group>"; };
+		D5D96EB421806865009687BF /* AVAudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioPlayerViewController.swift; sourceTree = "<group>"; };
+		D5D96EB621807112009687BF /* summer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = summer.mp3; sourceTree = "<group>"; };
+		D5E8E65221817D4900A3FE5D /* Chess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chess.storyboard; sourceTree = "<group>"; };
+		D5E8E65421817D9400A3FE5D /* ChineseChessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseChessViewController.swift; sourceTree = "<group>"; };
+		D5E8E65B21819B7100A3FE5D /* 黑卒.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑卒.gif"; sourceTree = "<group>"; };
+		D5E8E65C21819B7100A3FE5D /* 红兵.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红兵.gif"; sourceTree = "<group>"; };
+		D5E8E65D21819B7100A3FE5D /* 黑士.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑士.gif"; sourceTree = "<group>"; };
+		D5E8E65E21819B7100A3FE5D /* 红车.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红车.gif"; sourceTree = "<group>"; };
+		D5E8E65F21819B7100A3FE5D /* 棋盘.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "棋盘.gif"; sourceTree = "<group>"; };
+		D5E8E66021819B7100A3FE5D /* 红帅.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红帅.gif"; sourceTree = "<group>"; };
+		D5E8E66121819B7100A3FE5D /* 黒炮.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黒炮.gif"; sourceTree = "<group>"; };
+		D5E8E66221819B7100A3FE5D /* 黑将.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑将.gif"; sourceTree = "<group>"; };
+		D5E8E66321819B7100A3FE5D /* 红马.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红马.gif"; sourceTree = "<group>"; };
+		D5E8E66421819B7100A3FE5D /* 红炮.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红炮.gif"; sourceTree = "<group>"; };
+		D5E8E66521819B7100A3FE5D /* 红象.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红象.gif"; sourceTree = "<group>"; };
+		D5E8E66621819B7100A3FE5D /* 黑车.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑车.gif"; sourceTree = "<group>"; };
+		D5E8E66721819B7100A3FE5D /* 红士.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "红士.gif"; sourceTree = "<group>"; };
+		D5E8E66821819B7200A3FE5D /* 黑马.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑马.gif"; sourceTree = "<group>"; };
+		D5E8E66921819B7200A3FE5D /* 黑象.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑象.gif"; sourceTree = "<group>"; };
+		D5E8E67B2181B24A00A3FE5D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		D5E8E6A92187EF1E00A3FE5D /* FiveStoneChessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStoneChessViewController.swift; sourceTree = "<group>"; };
+		D5E8E6AD2187F88D00A3FE5D /* FiveStoneChessBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStoneChessBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +113,90 @@
 			isa = PBXGroup;
 			children = (
 				D5D96E92217FFF80009687BF /* AppDelegate.swift */,
-				D5D96E94217FFF80009687BF /* ViewController.swift */,
+				D5D96EA421800108009687BF /* DemosTableViewController.swift */,
+				D57E3712218AE44E00059283 /* Const.swift */,
+				D5E8E65121817D1400A3FE5D /* Chess */,
+				D5D96EAF21802FA3009687BF /* AudioVideo */,
+				D5D96EA6218010DB009687BF /* Algorithm */,
 				D5D96E96217FFF80009687BF /* Main.storyboard */,
+				D5D96EB621807112009687BF /* summer.mp3 */,
+				D5E8E65A21819B3100A3FE5D /* resource */,
 				D5D96E99217FFF81009687BF /* Assets.xcassets */,
 				D5D96E9B217FFF81009687BF /* LaunchScreen.storyboard */,
 				D5D96E9E217FFF81009687BF /* Info.plist */,
 			);
 			path = Demos;
+			sourceTree = "<group>";
+		};
+		D5D96EA6218010DB009687BF /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				D5D96EA72180115E009687BF /* SortViewController.swift */,
+				D5D96EA921801416009687BF /* SortView.swift */,
+				D5D96EAB2180146E009687BF /* Array+Sorts.swift */,
+				D5D96EAD218017B8009687BF /* Algorithm.storyboard */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		D5D96EAF21802FA3009687BF /* AudioVideo */ = {
+			isa = PBXGroup;
+			children = (
+				D5D96EB021803074009687BF /* AudioVideo.storyboard */,
+				D5D96EB421806865009687BF /* AVAudioPlayerViewController.swift */,
+			);
+			path = AudioVideo;
+			sourceTree = "<group>";
+		};
+		D5E8E65121817D1400A3FE5D /* Chess */ = {
+			isa = PBXGroup;
+			children = (
+				D5E8E65221817D4900A3FE5D /* Chess.storyboard */,
+				D5E8E67E21870F3200A3FE5D /* FiveStoneChess */,
+				D5E8E67D21870DCE00A3FE5D /* ChineseChess */,
+			);
+			path = Chess;
+			sourceTree = "<group>";
+		};
+		D5E8E65A21819B3100A3FE5D /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				D5E8E67B2181B24A00A3FE5D /* icon.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		D5E8E67D21870DCE00A3FE5D /* ChineseChess */ = {
+			isa = PBXGroup;
+			children = (
+				D5E8E66121819B7100A3FE5D /* 黒炮.gif */,
+				D5E8E66621819B7100A3FE5D /* 黑车.gif */,
+				D5E8E66221819B7100A3FE5D /* 黑将.gif */,
+				D5E8E66821819B7200A3FE5D /* 黑马.gif */,
+				D5E8E65D21819B7100A3FE5D /* 黑士.gif */,
+				D5E8E66921819B7200A3FE5D /* 黑象.gif */,
+				D5E8E65B21819B7100A3FE5D /* 黑卒.gif */,
+				D5E8E65C21819B7100A3FE5D /* 红兵.gif */,
+				D5E8E65E21819B7100A3FE5D /* 红车.gif */,
+				D5E8E66321819B7100A3FE5D /* 红马.gif */,
+				D5E8E66421819B7100A3FE5D /* 红炮.gif */,
+				D5E8E66721819B7100A3FE5D /* 红士.gif */,
+				D5E8E66021819B7100A3FE5D /* 红帅.gif */,
+				D5E8E66521819B7100A3FE5D /* 红象.gif */,
+				D5E8E65F21819B7100A3FE5D /* 棋盘.gif */,
+				D5E8E65421817D9400A3FE5D /* ChineseChessViewController.swift */,
+				D57E3710218A96A000059283 /* ChineseChessBoardView.swift */,
+			);
+			path = ChineseChess;
+			sourceTree = "<group>";
+		};
+		D5E8E67E21870F3200A3FE5D /* FiveStoneChess */ = {
+			isa = PBXGroup;
+			children = (
+				D5E8E6A92187EF1E00A3FE5D /* FiveStoneChessViewController.swift */,
+				D5E8E6AD2187F88D00A3FE5D /* FiveStoneChessBoardView.swift */,
+			);
+			path = FiveStoneChess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +257,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E8E66F21819B7200A3FE5D /* 红帅.gif in Resources */,
+				D5E8E66C21819B7200A3FE5D /* 黑士.gif in Resources */,
+				D5E8E66E21819B7200A3FE5D /* 棋盘.gif in Resources */,
 				D5D96E9D217FFF81009687BF /* LaunchScreen.storyboard in Resources */,
+				D5E8E67321819B7200A3FE5D /* 红炮.gif in Resources */,
 				D5D96E9A217FFF81009687BF /* Assets.xcassets in Resources */,
+				D5D96EAE218017B8009687BF /* Algorithm.storyboard in Resources */,
 				D5D96E98217FFF80009687BF /* Main.storyboard in Resources */,
+				D5E8E65321817D4900A3FE5D /* Chess.storyboard in Resources */,
+				D5E8E67221819B7200A3FE5D /* 红马.gif in Resources */,
+				D5E8E67021819B7200A3FE5D /* 黒炮.gif in Resources */,
+				D5E8E67721819B7200A3FE5D /* 黑马.gif in Resources */,
+				D5E8E66A21819B7200A3FE5D /* 黑卒.gif in Resources */,
+				D5E8E67C2181B24A00A3FE5D /* icon.png in Resources */,
+				D5E8E67121819B7200A3FE5D /* 黑将.gif in Resources */,
+				D5E8E66D21819B7200A3FE5D /* 红车.gif in Resources */,
+				D5D96EB721807112009687BF /* summer.mp3 in Resources */,
+				D5E8E67821819B7200A3FE5D /* 黑象.gif in Resources */,
+				D5E8E67621819B7200A3FE5D /* 红士.gif in Resources */,
+				D5D96EB121803074009687BF /* AudioVideo.storyboard in Resources */,
+				D5E8E66B21819B7200A3FE5D /* 红兵.gif in Resources */,
+				D5E8E67521819B7200A3FE5D /* 黑车.gif in Resources */,
+				D5E8E67421819B7200A3FE5D /* 红象.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +290,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D96E95217FFF80009687BF /* ViewController.swift in Sources */,
+				D5E8E6AE2187F88D00A3FE5D /* FiveStoneChessBoardView.swift in Sources */,
+				D5D96EAA21801416009687BF /* SortView.swift in Sources */,
+				D5D96EA521800108009687BF /* DemosTableViewController.swift in Sources */,
+				D5D96EB521806865009687BF /* AVAudioPlayerViewController.swift in Sources */,
+				D57E3713218AE44E00059283 /* Const.swift in Sources */,
 				D5D96E93217FFF80009687BF /* AppDelegate.swift in Sources */,
+				D57E3711218A96A000059283 /* ChineseChessBoardView.swift in Sources */,
+				D5D96EAC2180146E009687BF /* Array+Sorts.swift in Sources */,
+				D5E8E65521817D9400A3FE5D /* ChineseChessViewController.swift in Sources */,
+				D5E8E6AA2187EF1E00A3FE5D /* FiveStoneChessViewController.swift in Sources */,
+				D5D96EA82180115E009687BF /* SortViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U68NQEERZT;
 				INFOPLIST_FILE = Demos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U68NQEERZT;
 				INFOPLIST_FILE = Demos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

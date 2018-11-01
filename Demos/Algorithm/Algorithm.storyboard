@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xNh-Ti-ODN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--排序算法-->
+        <scene sceneID="qTL-CG-eYv">
+            <objects>
+                <viewController restorationIdentifier="SortViewController" storyboardIdentifier="SortViewController" id="vrA-hN-kt3" customClass="SortViewController" customModule="Demos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lZf-Tk-ra9" customClass="SortView" customModule="Demos" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DPe-Sn-pZE">
+                                <rect key="frame" x="20" y="589" width="335" height="29"/>
+                                <segments>
+                                    <segment title="选择"/>
+                                    <segment title="冒泡"/>
+                                    <segment title="插入"/>
+                                    <segment title="快排"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeSort:" destination="vrA-hN-kt3" eventType="touchUpInside" id="KYw-Pk-Zk2"/>
+                                </connections>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="M62-b1-5lY">
+                                <rect key="frame" x="129" y="516" width="117" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gx-5c-Q1L">
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="运行"/>
+                                        <connections>
+                                            <action selector="playButtonAction:" destination="vrA-hN-kt3" eventType="touchUpInside" id="p6A-W0-n0a"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ac-bA-5pR">
+                                        <rect key="frame" x="86" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="重设"/>
+                                        <connections>
+                                            <action selector="refreshButtonAction:" destination="vrA-hN-kt3" eventType="touchUpInside" id="yFI-qN-VSe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cC-BE-iFB">
+                                <rect key="frame" x="20" y="461" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FIV-Cw-l60"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mC7-8k-0l9" firstAttribute="trailing" secondItem="6cC-BE-iFB" secondAttribute="trailing" constant="20" id="3bt-ty-hn0"/>
+                            <constraint firstItem="DPe-Sn-pZE" firstAttribute="centerX" secondItem="lZf-Tk-ra9" secondAttribute="centerX" id="5cP-ol-spm"/>
+                            <constraint firstItem="M62-b1-5lY" firstAttribute="centerX" secondItem="lZf-Tk-ra9" secondAttribute="centerX" id="Dnq-bL-r73"/>
+                            <constraint firstItem="M62-b1-5lY" firstAttribute="top" secondItem="6cC-BE-iFB" secondAttribute="bottom" constant="25" id="IUf-NY-an9"/>
+                            <constraint firstItem="mC7-8k-0l9" firstAttribute="bottom" secondItem="DPe-Sn-pZE" secondAttribute="bottom" constant="50" id="Jak-4K-qRG"/>
+                            <constraint firstItem="mC7-8k-0l9" firstAttribute="trailing" secondItem="DPe-Sn-pZE" secondAttribute="trailing" constant="20" id="P6E-M8-7Af"/>
+                            <constraint firstItem="DPe-Sn-pZE" firstAttribute="top" secondItem="M62-b1-5lY" secondAttribute="bottom" constant="43" id="c0g-HV-1BD"/>
+                            <constraint firstItem="6cC-BE-iFB" firstAttribute="leading" secondItem="mC7-8k-0l9" secondAttribute="leading" constant="20" id="eFP-yT-L8k"/>
+                            <constraint firstItem="DPe-Sn-pZE" firstAttribute="leading" secondItem="mC7-8k-0l9" secondAttribute="leading" constant="20" id="ybU-0d-4CW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mC7-8k-0l9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="排序算法" id="kR7-kw-U8m">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="HjY-ON-8xd">
+                                <connections>
+                                    <action selector="refreshItemAction:" destination="vrA-hN-kt3" id="hTF-dN-JMG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="play" id="Thg-SL-DGl">
+                                <connections>
+                                    <action selector="playItemAction:" destination="vrA-hN-kt3" id="nSc-EU-4gz"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="playButton" destination="6Gx-5c-Q1L" id="9gY-rH-56l"/>
+                        <outlet property="refreshButton" destination="3ac-bA-5pR" id="n83-BE-muw"/>
+                        <outlet property="sortsSegmentedControl" destination="DPe-Sn-pZE" id="qt7-x8-41X"/>
+                        <outlet property="timeLabel" destination="6cC-BE-iFB" id="F4W-oK-J2d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svM-Vu-NQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1480.8" y="-148.87556221889056"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kaE-Ww-jH0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xNh-Ti-ODN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="17d-hx-9Ie">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vrA-hN-kt3" kind="relationship" relationship="rootViewController" id="yEm-3q-dY4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mik-lc-fPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="36.431784107946029"/>
+        </scene>
+    </scenes>
+</document>

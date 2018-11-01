@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCT-gg-HUH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chinese Chess View Controller-->
+        <scene sceneID="4Dj-ZE-ZEJ">
+            <objects>
+                <viewController storyboardIdentifier="ChineseChessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ydE-0x-NKk" customClass="ChineseChessViewController" customModule="Demos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EIg-ZI-s6O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="棋盘.gif" translatesAutoresizingMaskIntoConstraints="NO" id="7hK-8e-xMP" customClass="ChineseChessBoardView" customModule="Demos" customModuleProvider="target">
+                                <rect key="frame" x="16" y="143" width="343" height="381"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7hK-8e-xMP" secondAttribute="height" multiplier="558:620" id="Umn-62-1Lg"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sRN-PN-UQG" appends="YES" id="KEM-Nn-IIX"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqT-Xv-5lF">
+                                <rect key="frame" x="164" y="549" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="playGameAction:" destination="ydE-0x-NKk" eventType="touchUpInside" id="n4N-ki-IxU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7hK-8e-xMP" firstAttribute="leading" secondItem="07c-6w-a3t" secondAttribute="leading" constant="16" id="8RX-3c-yVO"/>
+                            <constraint firstItem="7hK-8e-xMP" firstAttribute="centerY" secondItem="EIg-ZI-s6O" secondAttribute="centerY" id="Uid-Sv-21K"/>
+                            <constraint firstItem="07c-6w-a3t" firstAttribute="trailing" secondItem="7hK-8e-xMP" secondAttribute="trailing" constant="16" id="mYA-cc-0jn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="07c-6w-a3t"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="l3V-l1-ud4"/>
+                    <connections>
+                        <outlet property="boardImageView" destination="7hK-8e-xMP" id="hIZ-tP-NxA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mvq-dL-8Kk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sRN-PN-UQG">
+                    <connections>
+                        <action selector="tap:" destination="7hK-8e-xMP" id="4A3-Su-Mpy"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="772" y="154"/>
+        </scene>
+        <!--Five Stone Chess View Controller-->
+        <scene sceneID="RUI-Zv-r0B">
+            <objects>
+                <viewController storyboardIdentifier="FiveStoneChessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WJA-AU-Rax" customClass="FiveStoneChessViewController" customModule="Demos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96T-pq-umB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRW-if-XcV" customClass="FiveStoneChessBoardView" customModule="Demos" customModuleProvider="target">
+                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WRW-if-XcV" secondAttribute="height" multiplier="1:1" id="8bZ-7h-Kbj"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zq9-A3-Egh" appends="YES" id="wyf-ZW-sZ6"/>
+                                </connections>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="88" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-tj-bh4">
+                                <rect key="frame" x="16" y="576" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjC-eA-UpO">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="重新开始"/>
+                                        <connections>
+                                            <action selector="newGameAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="6aT-xV-muK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alm-o8-sUo">
+                                        <rect key="frame" x="150" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="开始"/>
+                                        <connections>
+                                            <action selector="startAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="875-UN-Gkt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-2L-vZf">
+                                        <rect key="frame" x="269" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="悔棋"/>
+                                        <connections>
+                                            <action selector="backStepAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="3dc-Lu-fEI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x5-yW-QkK">
+                                <rect key="frame" x="119" y="104" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WRW-if-XcV" firstAttribute="centerY" secondItem="96T-pq-umB" secondAttribute="centerY" id="QuK-25-BpJ"/>
+                            <constraint firstItem="xrC-jN-OBT" firstAttribute="trailing" secondItem="WRW-if-XcV" secondAttribute="trailing" constant="16" id="TjF-6J-dSP"/>
+                            <constraint firstItem="WRW-if-XcV" firstAttribute="leading" secondItem="xrC-jN-OBT" secondAttribute="leading" constant="16" id="yFT-fN-8g5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xrC-jN-OBT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fff-Qn-PgG"/>
+                    <connections>
+                        <outlet property="boardView" destination="WRW-if-XcV" id="6Ry-AP-dqJ"/>
+                        <outlet property="tipsLabel" destination="6x5-yW-QkK" id="djp-ce-0dr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLG-nA-ad4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zq9-A3-Egh">
+                    <connections>
+                        <action selector="tap:" destination="WRW-if-XcV" id="Znn-Xn-cGt"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="772" y="846.9265367316342"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yam-9c-eN7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WCT-gg-HUH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sc6-Nc-HwS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ydE-0x-NKk" kind="relationship" relationship="rootViewController" id="5tT-55-Kkv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qOS-XF-bYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="154.27286356821591"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wLU-NW-hQr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dq9-KJ-1aQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RM1-Lh-mzn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WJA-AU-Rax" kind="relationship" relationship="rootViewController" id="CRs-JQ-Pcp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eE-l2-hB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="62" y="847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="棋盘.gif" width="558" height="620"/>
+    </resources>
+</document>
