@@ -86,7 +86,7 @@ class ChineseChessBoardView: UIImageView {
         self.stones = []
         for i in 0 ... 31 {
             let stone = ChineseChessStone(frame: CGRect(x: -1, y: -1, width: 2 * kStoneR, height: 2 * kStoneR))
-            if i < 16 {
+            if i >= 16 {
                 stone.color = .red
                 
             }else {
@@ -177,6 +177,10 @@ class ChineseChessBoardView: UIImageView {
             }
         }
         
+        for stone in stones {
+            print("\(stone.point)-\(stone.color)-\(stone.type)")
+        }
+        
         
         self.state = .noRunning
         
@@ -184,6 +188,7 @@ class ChineseChessBoardView: UIImageView {
     
     func play() {
         self.state = .redC
+        print(self.state)
     }
     
     
@@ -195,8 +200,9 @@ class ChineseChessBoardView: UIImageView {
         
         let col = Int(colF + 0.5)
         let row = Int(rowF + 0.5)
-        let point = Point(col, row)
+        let point = Point(row, col)
         let key = "\(col)-\(row)"
+        print(key)
         
         switch self.state {
         case .noRunning:
@@ -205,8 +211,12 @@ class ChineseChessBoardView: UIImageView {
             if let stone = self.getStone(in: point) {
                 if stone.color == .red {
                     self.selectedStone = stone
+                    self.selectedStone?.alpha = 0.6
                     self.state = .redT
+                } else {
+                    print("不能那么选择")
                 }
+                
             }
         case .redT:
             if self.canMove(stone: self.selectedStone!, to: point) {
@@ -214,13 +224,19 @@ class ChineseChessBoardView: UIImageView {
                 self.state = .blackC
             } else {
                 self.state = .redC
+                print("不能那么走")
             }
+            self.selectedStone?.alpha = 1
         case .blackC:
             if let stone = self.getStone(in: point) {
                 if stone.color == .black {
                     self.selectedStone = stone
+                    self.selectedStone?.alpha = 0.6
                     self.state = .blackT
+                } else {
+                    print("不能那么选择")
                 }
+                
             }
         
         case .blackT:
@@ -229,7 +245,9 @@ class ChineseChessBoardView: UIImageView {
                 self.state = .redC
             } else {
                 self.state = .blackC
+                print("不能那么走")
             }
+            self.selectedStone?.alpha = 1
         case .gameover:
             print("ok")
         }
@@ -244,56 +262,105 @@ class ChineseChessBoardView: UIImageView {
     //行走规则
     func canMove(stone:ChineseChessStone, to newPoint: Point) -> Bool {
         let point = stone.point
-        if point == newPoint {
-            return false
+
+        //不能吃自己的子
+        if let s = self.getStone(in: newPoint){
+            if s.color == stone.color {
+                return false
+            }
         }
+        
         let xx = abs(point.x - newPoint.x)
-        let xMin = min(point.x, newPoint.x)
+//        let xMin = min(point.x, newPoint.x)
         let yy = abs(point.y - newPoint.y)
-        let yMin = min(point.y, newPoint.y)
+//        let yMin = min(point.y, newPoint.y)
         
         switch (stone.type) {
             
         case .ju:
-            if point.x == newPoint.x {
-                for i in 0 ..< yy {
-                    if ishaveStone(in: Point(newPoint.x, yMin + i)) {
-                        return false
-                    }
-                }
-            } else if point.y == newPoint.y {
-                for i in 1 ..< xx {
-                    if ishaveStone(in: Point(xMin + i, newPoint.y)) {
-                        return false
-                    }
-                }
+            let inRule = (point.x == newPoint.x) || (point.y == newPoint.y)
+            let noObstacle = self.noStoneInLine(between: point, pointB: newPoint)
+            if inRule && noObstacle {
+                return true
             }
-            return true
+            return false
             
         case .ma:
-            
-            return true
+            let inRule = (xx == 1 && yy == 2) || (xx == 2 && yy == 1)
+            var obstaclePoint = Point(0, 0)
+            if yy == 2 {
+                obstaclePoint = Point(newPoint.x , (newPoint.y + point.y) / 2)
+            } else {
+                obstaclePoint = Point((newPoint.x + point.x) / 2 , newPoint.y)
+            }
+                
+            let noObstacle = !self.ishaveStone(in: obstaclePoint)
+            if inRule && noObstacle {
+                return true
+            }
+            return false
             
         case .xiang:
-            
-            return true
+            let inRule = (xx == 2 && yy == 2)
+            let noObstacle = !self.ishaveStone(in: Point((newPoint.x + point.x) / 2 , (newPoint.y + point.y) / 2))
+            if inRule && noObstacle {
+                    return true
+            }
+            return false
             
         case .shi:
-            
-            return true
+            let inRule = (xx == 1 && yy == 1)
+            let inCityX = (newPoint.x > 2 && newPoint.x < 6)
+            let inCityY = (newPoint.y < 3 || newPoint.y > 7)
+            if  inRule && inCityX && inCityY  {
+                return true
+            }
+            return false
             
         case .jiang:
+            let inRule = (xx + yy == 1)
+            let inCityX = (newPoint.x > 2 && newPoint.x < 6)
+            let inCityY = (newPoint.y < 3 || newPoint.y > 7)
+            var faceJiang = false
+            if let jiangStone = getStone(in: newPoint) {
+                if jiangStone.type == .jiang && self.noStoneInLine(between: newPoint, pointB: point) {
+                    faceJiang = true
+                }
+            }
             
-            return true
+            if  (inRule && inCityX && inCityY) || faceJiang {
+                return true
+            }
+            return false
             
         case .pao:
-            
-            return true
+            let inRule = (point.x == newPoint.x) || (point.y == newPoint.y)
+            let haveOneObstacle = (self.theStonesCountInLine(between: point, pointB: newPoint) == 1)
+            if inRule && haveOneObstacle {
+                return true
+            }
+            return false
             
         case .bing:
-            
-            return true
-            
+            let oneStep = (xx + yy == 1)
+            var noBack = false
+            var noLeftRight = false
+            if stone.color == .red {
+                noBack = newPoint.y <= point.y
+                if point.y > 4 && xx == 0 {
+                    noLeftRight = true
+                }
+            } else {
+                noBack = newPoint >= point
+                if point.y < 5 && xx == 0 {
+                    noLeftRight = true
+                }
+            }
+           
+            if oneStep && noBack && noLeftRight {
+                return true
+            }
+            return false
         }
     }
     
@@ -316,6 +383,38 @@ class ChineseChessBoardView: UIImageView {
             }
         }
         return nil
+    }
+    
+    func theStonesCountInLine(between pointA: Point, pointB: Point) -> Int {
+        guard (pointA.x == pointB.x) || (pointA.y == pointB.y) else {
+            print("出错了！A、B不在一条线上")
+            return 0
+        }
+        var count = 0
+        if pointA.x == pointB.x {
+            for i in 1 ... abs(pointA.y - pointB.y) {
+                let point = Point(pointA.x, min(pointA.y, pointB.y) + i)
+                if self.ishaveStone(in: point) {
+                    count += 1
+                }
+            }
+        } else if pointA.y == pointB.y {
+            for i in 1 ... abs(pointA.x - pointB.x) {
+                let point = Point(min(pointA.x, pointB.x) + i, pointA.y)
+                if self.ishaveStone(in: point) {
+                    count += 1
+                }
+            }
+        }
+        return count
+        
+    }
+    
+    func noStoneInLine(between pointA:Point, pointB:Point) -> Bool {
+        if self.theStonesCountInLine(between: pointA, pointB: pointB) == 0 {
+            return true
+        }
+        return false
     }
     
     //悔棋
