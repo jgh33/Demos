@@ -71,6 +71,9 @@ class FiveStoneChessBoardView: UIView {
         let col = Int(colF + 0.5)
         let row = Int(rowF + 0.5)
         let key = "\(col)-\(row)"
+        if col < 0 || col > 14 || row < 0 || row > 14 {
+            return
+        }
         
         if !stoneSteps.keys.contains(key) {
             let stoneView = self.makeAStoneView()

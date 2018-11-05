@@ -32,8 +32,7 @@ class ChineseChessStone: UIImageView {
     var color: Color = .black
     var point: Point = (-1, -1) {
         willSet {
-            center = CGPoint(x: kBoardEdgeWidth + CGFloat(newValue.y) * kGridWidth, y: kBoardEdgeHeight + CGFloat(newValue.x) * kGridWidth)
-            //            frame.origin = CGPoint(x: kBoardEdgeWidth + CGFloat(newValue.x) * kGridWidth - kStoneR, y: kBoardEdgeHeight + CGFloat(newValue.y) * kGridWidth - kStoneR)
+            center = CGPoint(x: kBoardEdgeWidth + CGFloat(newValue.x) * kGridWidth, y: kBoardEdgeHeight + CGFloat(newValue.y) * kGridWidth)
         }
     }
     
@@ -147,29 +146,29 @@ class ChineseChessBoardView: UIImageView {
             self.stones.append(stone)
         }
 
-        for row in 0 ... 9 {
-            for col in 0 ... 8 {
-                switch (row, col) {
-                case (0, _):
-                    stones[col].point = (0, col)
-                case (2,1):
-                    stones[9].point = (2, 1)
-                case (2,7):
-                    stones[10].point = (2,7)
-                case (3, _):
-                    if col % 2 == 0 {
-                        stones[11 + col / 2].point = (3, col)
+        for x in 0 ... 8 {
+            for y in 0 ... 9 {
+                switch (x, y) {
+                case (_, 0):
+                    stones[x].point = (x, y)
+                case (1,2):
+                    stones[9].point = (x, y)
+                case (7,2):
+                    stones[10].point = (x, y)
+                case (_, 3):
+                    if x % 2 == 0 {
+                        stones[11 + x / 2].point = (x, y)
                     }
-                case (9, _):
-                    stones[col + 16].point = (9, col)
+                case (_, 9):
+                    stones[x + 16].point = (x, y)
                     
-                case (7,1):
-                    stones[25].point = (7, 1)
+                case (1,7):
+                    stones[25].point = (x, y)
                 case (7,7):
-                    stones[26].point = (7, 7)
-                case (6,_):
-                    if col % 2 == 0 {
-                        stones[27 + col / 2].point = (6, col)
+                    stones[26].point = (x, y)
+                case (_,6):
+                    if x % 2 == 0 {
+                        stones[27 + x / 2].point = (x, y)
                     }
                 default:
                     continue
@@ -184,9 +183,11 @@ class ChineseChessBoardView: UIImageView {
         
         self.state = .noRunning
         
+        
     }
     
     func play() {
+        self.isUserInteractionEnabled = true
         self.state = .redC
         print(self.state)
     }
@@ -195,13 +196,16 @@ class ChineseChessBoardView: UIImageView {
     
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: sender.view)
-        let colF = (location.x - kBoardEdgeWidth) / kGridWidth
-        let rowF = (location.y - kBoardEdgeHeight) / kGridWidth
+        let xF = (location.x - kBoardEdgeWidth) / kGridWidth
+        let yF = (location.y - kBoardEdgeHeight) / kGridWidth
         
-        let col = Int(colF + 0.5)
-        let row = Int(rowF + 0.5)
-        let point = Point(row, col)
-        let key = "\(col)-\(row)"
+        let x = Int(xF + 0.5)
+        let y = Int(yF + 0.5)
+        if x > 8 || x < 0 || y < 0 || y > 9 {
+            return
+        }
+        let point = Point(x, y)
+        let key = "\(x)-\(y)"
         print(key)
         
         switch self.state {
@@ -220,6 +224,7 @@ class ChineseChessBoardView: UIImageView {
             }
         case .redT:
             if self.canMove(stone: self.selectedStone!, to: point) {
+                self.dieStone(at: point)
                 self.selectedStone!.point = point
                 self.state = .blackC
             } else {
@@ -241,6 +246,7 @@ class ChineseChessBoardView: UIImageView {
         
         case .blackT:
             if self.canMove(stone: self.selectedStone!, to: point) {
+                self.dieStone(at: point)
                 self.selectedStone!.point = point
                 self.state = .redC
             } else {
@@ -289,9 +295,9 @@ class ChineseChessBoardView: UIImageView {
             let inRule = (xx == 1 && yy == 2) || (xx == 2 && yy == 1)
             var obstaclePoint = Point(0, 0)
             if yy == 2 {
-                obstaclePoint = Point(newPoint.x , (newPoint.y + point.y) / 2)
+                obstaclePoint = Point(point.x , (newPoint.y + point.y) / 2)
             } else {
-                obstaclePoint = Point((newPoint.x + point.x) / 2 , newPoint.y)
+                obstaclePoint = Point((newPoint.x + point.x) / 2 , point.y)
             }
                 
             let noObstacle = !self.ishaveStone(in: obstaclePoint)
@@ -303,7 +309,11 @@ class ChineseChessBoardView: UIImageView {
         case .xiang:
             let inRule = (xx == 2 && yy == 2)
             let noObstacle = !self.ishaveStone(in: Point((newPoint.x + point.x) / 2 , (newPoint.y + point.y) / 2))
-            if inRule && noObstacle {
+            var noRiver = false
+            if (stone.color == .red && newPoint.y > 4) || (stone.color == .black && newPoint.y < 5){
+                noRiver = true
+            }
+            if inRule && noObstacle && noRiver {
                     return true
             }
             return false
@@ -335,8 +345,9 @@ class ChineseChessBoardView: UIImageView {
             
         case .pao:
             let inRule = (point.x == newPoint.x) || (point.y == newPoint.y)
+            let noObstacle = self.noStoneInLine(between: point, pointB: newPoint)
             let haveOneObstacle = (self.theStonesCountInLine(between: point, pointB: newPoint) == 1)
-            if inRule && haveOneObstacle {
+            if inRule && (haveOneObstacle || noObstacle) {
                 return true
             }
             return false
@@ -344,16 +355,16 @@ class ChineseChessBoardView: UIImageView {
         case .bing:
             let oneStep = (xx + yy == 1)
             var noBack = false
-            var noLeftRight = false
+            var noLeftRight = true
             if stone.color == .red {
-                noBack = newPoint.y <= point.y
-                if point.y > 4 && xx == 0 {
-                    noLeftRight = true
+                noBack = (newPoint.y <= point.y)
+                if point.y > 4 && xx == 1 {
+                    noLeftRight = false
                 }
             } else {
-                noBack = newPoint >= point
-                if point.y < 5 && xx == 0 {
-                    noLeftRight = true
+                noBack = (newPoint.y >= point.y)
+                if point.y < 5 && xx == 1 {
+                    noLeftRight = false
                 }
             }
            
@@ -392,14 +403,20 @@ class ChineseChessBoardView: UIImageView {
         }
         var count = 0
         if pointA.x == pointB.x {
-            for i in 1 ... abs(pointA.y - pointB.y) {
+            if abs(pointA.y - pointB.y) < 2 {
+                return 0
+            }
+            for i in 1 ... abs(pointA.y - pointB.y) - 1 {
                 let point = Point(pointA.x, min(pointA.y, pointB.y) + i)
                 if self.ishaveStone(in: point) {
                     count += 1
                 }
             }
         } else if pointA.y == pointB.y {
-            for i in 1 ... abs(pointA.x - pointB.x) {
+            if abs(pointA.x - pointB.x) < 2 {
+                return 0
+            }
+            for i in 1 ... abs(pointA.x - pointB.x) - 1 {
                 let point = Point(min(pointA.x, pointB.x) + i, pointA.y)
                 if self.ishaveStone(in: point) {
                     count += 1
@@ -415,6 +432,23 @@ class ChineseChessBoardView: UIImageView {
             return true
         }
         return false
+    }
+    
+    func dieStone(at point: Point) {
+        if let stone = self.getStone(in: point) {
+            stone.isLiving = false
+            stone.point = Point(-100, -100)
+            print("\(stone.color)\(stone.type)被吃！")
+            if stone.type == .jiang {
+                gameover()
+            }
+        }
+    }
+    
+    func gameover() {
+        self.isUserInteractionEnabled = false
+        self.state = .gameover
+        print("game over!")
     }
     
     //悔棋
