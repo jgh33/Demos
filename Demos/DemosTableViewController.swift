@@ -9,7 +9,7 @@
 import UIKit
 
 
-let 动画: (name: String, list: [String]) = ("动画", ["A", "B"])
+let 动画: (name: String, list: [String]) = ("动画", ["基本动画", "B"])
 let 算法: (name: String, list: [String]) = ("算法", ["排序算法", "只能"])
 let 多媒体: (name: String, list: [String]) = ("多媒体", ["AVAudioPlayer", "MPMovie"])
 let 棋牌:  (name: String, list: [String]) = ("棋牌", ["象棋", "五子棋"])
@@ -63,9 +63,9 @@ class DemosTableViewController: UITableViewController {
         var id = ""
         switch indexPath.section {
         case 0:
-            name = "Anm"
+            name = "Animation"
             if indexPath.row == 0 {
-                id = "A"
+                id = "BaseAnimationController"
             } else if indexPath.row == 1 {
                 id = "B"
             }
