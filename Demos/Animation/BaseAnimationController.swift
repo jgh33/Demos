@@ -10,7 +10,7 @@ import UIKit
 
 private let kWidth:CGFloat = 70
 private let kHeight:CGFloat = 70
-private let kStartPointX:CGFloat = 20
+private let kStartPointX:CGFloat = 40
 private let kStartPointY:CGFloat = 200
 
 class BaseAnimationController: UIViewController {
@@ -23,7 +23,7 @@ class BaseAnimationController: UIViewController {
     
     func delSubviews() {
         for v in self.view.subviews {
-            if !v.isKind(of: UIButton.self) {
+            if !v.isKind(of: UIStackView.self) {
                 v.removeFromSuperview()
             }
         }
@@ -38,8 +38,10 @@ class BaseAnimationController: UIViewController {
         view.addSubview(moveView)
         
         let moveAnim = CABasicAnimation(keyPath: "position")
-        moveAnim.fromValue = NSValue(cgPoint: CGPoint(x: kStartPointX, y: kStartPointY))
-        moveAnim.toValue = NSValue(cgPoint: CGPoint(x: kScreenWidth - 2 * kStartPointX - kWidth, y: kStartPointY))
+        let startPoint = CGPoint(x: kStartPointX + kWidth / 2, y: kStartPointY)
+        let endPoint = CGPoint(x: kScreenWidth - kStartPointX - kWidth / 2, y: kStartPointY)
+        moveAnim.fromValue = NSValue(cgPoint: startPoint)
+        moveAnim.toValue = NSValue(cgPoint: endPoint)
         moveAnim.duration = 2
         moveAnim.repeatCount = Float.infinity
         moveAnim.autoreverses = true
