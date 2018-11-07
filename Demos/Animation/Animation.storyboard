@@ -104,6 +104,46 @@
             </objects>
             <point key="canvasLocation" x="839" y="54"/>
         </scene>
+        <!--Key Frame Animation View Controller-->
+        <scene sceneID="1w1-54-8Sz">
+            <objects>
+                <viewController storyboardIdentifier="KeyFrameAnimationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jcL-d6-RjS" customClass="KeyFrameAnimationViewController" customModule="Demos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="755-ej-A8r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-XF-dUg">
+                                <rect key="frame" x="20" y="577" width="335" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bav-ge-uR7">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNf-3b-aWh">
+                                        <rect key="frame" x="144.5" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2K-cr-aMR">
+                                        <rect key="frame" x="289" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mVO-XF-dUg" firstAttribute="leading" secondItem="PMR-y4-I4G" secondAttribute="leading" constant="20" id="98Y-OW-X4O"/>
+                            <constraint firstItem="PMR-y4-I4G" firstAttribute="trailing" secondItem="mVO-XF-dUg" secondAttribute="trailing" constant="20" id="DSr-Tt-Vn2"/>
+                            <constraint firstItem="PMR-y4-I4G" firstAttribute="bottom" secondItem="mVO-XF-dUg" secondAttribute="bottom" constant="60" id="FMx-1e-xZh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PMR-y4-I4G"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5rE-SC-XYN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CjZ-ab-TSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1726" y="729"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="knJ-di-FRu">
             <objects>
@@ -121,6 +161,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLp-Dw-FoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="54.422788605697157"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="35J-BO-wde">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W9U-Fn-vje" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eW2-wz-Iow">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jcL-d6-RjS" kind="relationship" relationship="rootViewController" id="l00-Mw-656"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64A-eU-t6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="837.60000000000002" y="762.36881559220399"/>
         </scene>
     </scenes>
 </document>

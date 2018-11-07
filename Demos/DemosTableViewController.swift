@@ -67,7 +67,7 @@ class DemosTableViewController: UITableViewController {
             if indexPath.row == 0 {
                 id = "BaseAnimationController"
             } else if indexPath.row == 1 {
-                id = "B"
+                id = "KeyFrameAnimationViewController"
             }
         case 1:
             name = "Algorithm"
