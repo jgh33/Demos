@@ -186,22 +186,31 @@ class BaseAnimationController: UIViewController {
         cornerRadiusView.layer.add(cornerRadiusAnim, forKey: "cornerRadiusAnim")
     }
     
-    @IBAction func bounds(_ sender: UIButton) {
+    @IBAction func groups(_ sender: UIButton) {
         self.delSubviews()
         
         /**------------------------指定大小缩放-------------------------------------*/
-        let boundsView = UIView(frame: CGRect(x: (kScreenWidth - kWidth + 50) / 2, y: kStartPointY, width: kWidth - 50, height: kHeight + 50))
+        let boundsView = UIView(frame: CGRect(x: kStartPointX, y: kStartPointY, width: kWidth, height: kHeight))
         boundsView.backgroundColor = UIColor.red
         view.addSubview(boundsView)
-        let boundsAnim = CABasicAnimation(keyPath: "bounds")
-        boundsAnim.toValue = NSValue(cgRect: CGRect(x: (kScreenWidth - kWidth - 50) / 2, y: kStartPointY, width: kWidth + 50, height: kHeight - 50))
-        boundsAnim.duration = 2
-        boundsAnim.autoreverses = true
-        boundsAnim.repeatCount = Float.infinity
-        boundsView.layer.add(boundsAnim, forKey: "boundsAnim")
+        // 位移
+        let anima1 = CABasicAnimation(keyPath: "position")
+        anima1.fromValue = NSValue(cgPoint: CGPoint(x: kStartPointX, y: kStartPointY))
+        anima1.toValue = NSValue(cgPoint: CGPoint(x: kScreenWidth - kStartPointX - kWidth, y: kStartPointY))
+        // 缩放
+        let anima2 = CABasicAnimation(keyPath: "transform.scale")
+        anima2.fromValue = NSNumber.init(value: 0.8)
+        anima2.toValue = NSNumber.init(value: 2.0)
+        // 旋转
+        let anima3 = CABasicAnimation(keyPath: "transform.rotation")
+        anima3.toValue = Double.pi*4
+        // 组合
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.animations = [anima1, anima2, anima3]
+        groupAnimation.duration = 3.0
+        
+        boundsView.layer.add(groupAnimation, forKey: nil)
     }
     
-    
-    
-    
+  
 }

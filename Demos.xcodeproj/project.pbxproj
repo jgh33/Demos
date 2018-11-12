@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D57195BF2192C27F001936A4 /* KeyFrameAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57195BE2192C27F001936A4 /* KeyFrameAnimationViewController.swift */; };
+		D57195BF2192C27F001936A4 /* OtherAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57195BE2192C27F001936A4 /* OtherAnimationViewController.swift */; };
 		D57E3711218A96A000059283 /* ChineseChessBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E3710218A96A000059283 /* ChineseChessBoardView.swift */; };
 		D57E3713218AE44E00059283 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E3712218AE44E00059283 /* Const.swift */; };
+		D58835F72199195100126B40 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58835F62199195100126B40 /* TransitionViewController.swift */; };
 		D590233421912BF4006D4FFC /* BaseAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590233321912BF4006D4FFC /* BaseAnimationController.swift */; };
 		D590233621912C0E006D4FFC /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590233521912C0E006D4FFC /* Animation.storyboard */; };
 		D5D96E93217FFF80009687BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D96E92217FFF80009687BF /* AppDelegate.swift */; };
@@ -47,9 +48,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D57195BE2192C27F001936A4 /* KeyFrameAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrameAnimationViewController.swift; sourceTree = "<group>"; };
+		D57195BE2192C27F001936A4 /* OtherAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAnimationViewController.swift; sourceTree = "<group>"; };
 		D57E3710218A96A000059283 /* ChineseChessBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseChessBoardView.swift; sourceTree = "<group>"; };
 		D57E3712218AE44E00059283 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D58835F62199195100126B40 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		D590233321912BF4006D4FFC /* BaseAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimationController.swift; sourceTree = "<group>"; };
 		D590233521912C0E006D4FFC /* Animation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
 		D5D96E8F217FFF80009687BF /* Demos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				D590233321912BF4006D4FFC /* BaseAnimationController.swift */,
-				D57195BE2192C27F001936A4 /* KeyFrameAnimationViewController.swift */,
+				D57195BE2192C27F001936A4 /* OtherAnimationViewController.swift */,
+				D58835F62199195100126B40 /* TransitionViewController.swift */,
 				D590233521912C0E006D4FFC /* Animation.storyboard */,
 			);
 			path = Animation;
@@ -313,9 +316,10 @@
 				D5D96EA521800108009687BF /* DemosTableViewController.swift in Sources */,
 				D5D96EB521806865009687BF /* AVAudioPlayerViewController.swift in Sources */,
 				D57E3713218AE44E00059283 /* Const.swift in Sources */,
+				D58835F72199195100126B40 /* TransitionViewController.swift in Sources */,
 				D5D96E93217FFF80009687BF /* AppDelegate.swift in Sources */,
 				D57E3711218A96A000059283 /* ChineseChessBoardView.swift in Sources */,
-				D57195BF2192C27F001936A4 /* KeyFrameAnimationViewController.swift in Sources */,
+				D57195BF2192C27F001936A4 /* OtherAnimationViewController.swift in Sources */,
 				D5D96EAC2180146E009687BF /* Array+Sorts.swift in Sources */,
 				D5E8E65521817D9400A3FE5D /* ChineseChessViewController.swift in Sources */,
 				D5E8E6AA2187EF1E00A3FE5D /* FiveStoneChessViewController.swift in Sources */,

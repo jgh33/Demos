@@ -25,7 +25,7 @@ class AVAudioPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         url = URL(fileURLWithPath: Bundle.main.path(forResource: "summer", ofType: "mp3")!)
-
+        progressSlider.isContinuous = false
         if audioPlayer == nil {
             audioPlayer = try! AVAudioPlayer(contentsOf: url)
         }
@@ -37,45 +37,58 @@ class AVAudioPlayerViewController: UIViewController {
         refreshUI()
     }
     
-    
-    @IBAction func playOrPause(_ sender: UIButton) {
+
+    @IBAction func playorPauseAction() {
         if audioPlayer!.isPlaying {
             audioPlayer!.pause()
             refreshUI()
             self.timer?.invalidate()
+            
         } else {
             audioPlayer.play()
-            self.timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(refreshUI), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(refreshUI), userInfo: nil, repeats: true)
         }
-        
-        
     }
     
     
-    @IBAction func progressAction(_ sender: UISlider) {
-        
-        
+
+    @IBAction func valueChangeAction(_ sender: UISlider) {
+        self.audioPlayer.currentTime = Double(sender.value)
+        self.setTimeLabel()
     }
+    
+    
+    @IBAction func valueChangeOver(_ sender: UISlider) {
+        self.audioPlayer.currentTime = Double(sender.value)
+        audioPlayer.play()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(refreshUI), userInfo: nil, repeats: true)
+    }
+    
     
     @objc func refreshUI() {
         self.progressSlider.value = Float(self.audioPlayer.currentTime)
         if audioPlayer.isPlaying {
             playButton.setTitle("暂停", for: .normal)
+            self.setTimeLabel()
         } else {
             playButton.setTitle("播放", for: .normal)
-            var min = Int(self.audioPlayer.currentTime) / 60
-            var sec = Int(self.audioPlayer.currentTime) % 60
-            var mins = min > 9 ? "\(min)" : "0\(min)"
-            var secs = sec > 9 ? "\(sec)" : "0\(sec)"
-            self.time1.text = mins + ":" + secs
-           
-            min = Int(self.audioPlayer.duration - self.audioPlayer.currentTime) / 60
-            sec = Int(self.audioPlayer.duration - self.audioPlayer.currentTime) % 60
-            mins = min > 9 ? "\(min)" : "0\(min)"
-            secs = sec > 9 ? "\(sec)" : "0\(sec)"
-            self.time2.text = mins + ":" + secs
+            
             
         }
+    }
+    
+    func setTimeLabel() {
+        var min = Int(self.audioPlayer.currentTime) / 60
+        var sec = Int(self.audioPlayer.currentTime) % 60
+        var mins = min > 9 ? "\(min)" : "0\(min)"
+        var secs = sec > 9 ? "\(sec)" : "0\(sec)"
+        self.time1.text = mins + ":" + secs
+        
+        min = Int(self.audioPlayer.duration - self.audioPlayer.currentTime) / 60
+        sec = Int(self.audioPlayer.duration - self.audioPlayer.currentTime) % 60
+        mins = min > 9 ? "\(min)" : "0\(min)"
+        secs = sec > 9 ? "\(sec)" : "0\(sec)"
+        self.time2.text = mins + ":" + secs
     }
     
 }
