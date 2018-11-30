@@ -8,12 +8,11 @@
 
 import Foundation
 
-class FiveStoneChessModel {
+//typealias Step = (key:String, isBlack: Bool)
+class FiveStoneChessModel: Codable {
     
-    fileprivate let lineCounts = 15
-    
-    var steps:[String] = []
-    var isOver: Bool = false
+    var steps:[String]
+    var isOver: Bool
     var isBlack: Bool {
         get {
             if steps.count % 2 == 0 {
@@ -22,5 +21,13 @@ class FiveStoneChessModel {
             return false
         }
     }
+    
+    init() {
+        self.steps = []
+        self.isOver = false
+    }
+    
+   
+    
     
 }

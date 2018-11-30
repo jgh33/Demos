@@ -87,9 +87,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alm-o8-sUo">
                                         <rect key="frame" x="171.5" y="0.0" width="31" height="30"/>
-                                        <state key="normal" title="开始"/>
+                                        <state key="normal" title="保存"/>
                                         <connections>
-                                            <action selector="startAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="875-UN-Gkt"/>
+                                            <action selector="saveAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="mXB-LR-JJJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-2L-vZf">
