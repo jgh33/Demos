@@ -67,20 +67,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRW-if-XcV" customClass="FiveStoneChessBoardView" customModule="Demos" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRW-if-XcV">
                                 <rect key="frame" x="16" y="162" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WRW-if-XcV" secondAttribute="height" multiplier="1:1" id="8bZ-7h-Kbj"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="zq9-A3-Egh" appends="YES" id="wyf-ZW-sZ6"/>
-                                </connections>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="88" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-tj-bh4">
-                                <rect key="frame" x="16" y="576" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-tj-bh4">
+                                <rect key="frame" x="16" y="577" width="343" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjC-eA-UpO">
                                         <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
@@ -90,14 +86,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alm-o8-sUo">
-                                        <rect key="frame" x="150" y="0.0" width="31" height="30"/>
+                                        <rect key="frame" x="171.5" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="开始"/>
                                         <connections>
                                             <action selector="startAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="875-UN-Gkt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-2L-vZf">
-                                        <rect key="frame" x="269" y="0.0" width="31" height="30"/>
+                                        <rect key="frame" x="312" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="悔棋"/>
                                         <connections>
                                             <action selector="backStepAction:" destination="WJA-AU-Rax" eventType="touchUpInside" id="3dc-Lu-fEI"/>
@@ -115,24 +111,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xrC-jN-OBT" firstAttribute="trailing" secondItem="xHT-tj-bh4" secondAttribute="trailing" constant="16" id="73r-Gp-Zej"/>
                             <constraint firstItem="WRW-if-XcV" firstAttribute="centerY" secondItem="96T-pq-umB" secondAttribute="centerY" id="QuK-25-BpJ"/>
                             <constraint firstItem="xrC-jN-OBT" firstAttribute="trailing" secondItem="WRW-if-XcV" secondAttribute="trailing" constant="16" id="TjF-6J-dSP"/>
+                            <constraint firstItem="xrC-jN-OBT" firstAttribute="bottom" secondItem="xHT-tj-bh4" secondAttribute="bottom" constant="60" id="eCQ-MR-7jX"/>
+                            <constraint firstItem="xHT-tj-bh4" firstAttribute="leading" secondItem="xrC-jN-OBT" secondAttribute="leading" constant="16" id="vl8-8r-YUo"/>
                             <constraint firstItem="WRW-if-XcV" firstAttribute="leading" secondItem="xrC-jN-OBT" secondAttribute="leading" constant="16" id="yFT-fN-8g5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xrC-jN-OBT"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fff-Qn-PgG"/>
                     <connections>
-                        <outlet property="boardView" destination="WRW-if-XcV" id="6Ry-AP-dqJ"/>
+                        <outlet property="boardView" destination="WRW-if-XcV" id="g8c-9A-7Ot"/>
                         <outlet property="tipsLabel" destination="6x5-yW-QkK" id="djp-ce-0dr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLG-nA-ad4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zq9-A3-Egh">
-                    <connections>
-                        <action selector="tap:" destination="WRW-if-XcV" id="Znn-Xn-cGt"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="772" y="846.9265367316342"/>
         </scene>
