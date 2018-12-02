@@ -19,13 +19,21 @@ class SortViewController: UIViewController {
     @IBOutlet weak var sortsSegmentedControl: UISegmentedControl!
     
     private var datas = [Int]()
-    private var timer: Timer?
-    var sema: DispatchSemaphore?
+    private var timer: Timer!
+    private var beginTimer: TimeInterval = 0
+    var sema = DispatchSemaphore(value: 1)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.timer = Timer.scheduledTimer(withTimeInterval: theTimeInterval, repeats: true, block: {timer in
+            self.sema.signal()
+            print("AAA")
+            let interval = Date().timeIntervalSince1970 - self.beginTimer
+            let millisecond = Int(round(interval * 1000))
+            self.timeLabel.text = "耗时\(millisecond)毫秒"
+        })
         reset()
     }
     
@@ -50,7 +58,7 @@ class SortViewController: UIViewController {
         reset()
     }
     private func reset() {
-        invalidateTimer()
+        self.timer.fireDate = Date.distantFuture
         datas = []
         timeLabel.text = nil
         for _ in 1 ... kBarCount {
@@ -61,17 +69,9 @@ class SortViewController: UIViewController {
     }
     
     private func play() {
-        invalidateTimer()
-        self.sema = DispatchSemaphore(value: 0)
-        let now = Date().timeIntervalSince1970
+        self.beginTimer = Date().timeIntervalSince1970
+        self.timer.fireDate = Date.distantPast
         
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: theTimeInterval, repeats: true, block: {[weak self] (atimer) in
-            self?.sema?.signal()
-            let interval = Date().timeIntervalSince1970 - now
-            let millisecond = Int(round(interval * 1000))
-            self?.timeLabel.text = "耗时\(millisecond)毫秒"
-        })
         let index = self.sortsSegmentedControl.selectedSegmentIndex
         DispatchQueue.global().async {
             switch index {
@@ -86,88 +86,64 @@ class SortViewController: UIViewController {
             default:
                 print("--------")
             }
-            
-            self.invalidateTimer()
-            self.printArray()
+            self.timer.fireDate = Date.distantFuture
+//            self.printArray()
         }
     }
     
     
-    private func invalidateTimer(){
-        if self.timer != nil{
-            self.timer!.invalidate()
-            self.timer = nil
-        }
-        self.sema = nil
+    private func comp(fromA s1:Int, toB s2:Int) -> IsDescending{
+        self.sema.wait()
+        return s1 > s2
     }
     
-    
-    private func comp(fromA s1:Int, toB s2:Int) -> ComparisonResult{
-        self.sema!.wait()
-        if s1 == s2{
-            return .orderedSame
-        }
-        
-        return s1 > s2 ? .orderedDescending : .orderedAscending
-    }
-    
-    private func printArray() {
-        print("数组：\(self.datas)")
-    }
+//    private func printArray() {
+//        print("数组：\(self.datas)")
+//    }
     
     //MARK: --排序算法
     private func selectionSort(){
-        self.datas.selectionF(usingComparator: { (s1, s2) -> ComparisonResult in
+        self.datas.selectionF(usingComparator: { (s1, s2) -> IsDescending in
             return comp(fromA: s1, toB: s2)
         }) {
-            DispatchQueue.main.sync {
-                (self.view as! SortView).array = self.datas
-                self.view.setNeedsDisplay()
-                
-            }
-            
+            self.drowSortView()
         }
-        
     }
     
     
     private func bubbleSort(){
-        self.datas.bubbleF(usingComparator: { (s1, s2) -> ComparisonResult in
+        self.datas.bubbleF(usingComparator: { (s1, s2) -> IsDescending in
             return comp(fromA: s1, toB: s2)
         }) {
-            DispatchQueue.main.sync {
-                (self.view as! SortView).array = self.datas
-                self.view.setNeedsDisplay()
-                
-            }
+            self.drowSortView()
         }
         
     }
     private func insertionSort(){
-        self.datas.insertionF(usingComparator: { (s1, s2) -> ComparisonResult in
+        self.datas.insertionF(usingComparator: { (s1, s2) -> IsDescending in
             return comp(fromA: s1, toB: s2)
         }) {
-            DispatchQueue.main.sync {
-                (self.view as! SortView).array = self.datas
-                self.view.setNeedsDisplay()
-                
-            }
+            self.drowSortView()
         }
         
     }
     
     private func quickSort(){
-        self.datas.quickF(usingComparator: { (s1, s2) -> ComparisonResult in
+        self.datas.quickF(usingComparator: { (s1, s2) -> IsDescending in
             return comp(fromA: s1, toB: s2)
         }) {
-            DispatchQueue.main.sync {
-                (self.view as! SortView).array = self.datas
-                self.view.setNeedsDisplay()
-                
-            }
-            
+            self.drowSortView()
         }
         
+    }
+    
+    func drowSortView() {
+        
+        DispatchQueue.main.async {
+            (self.view as! SortView).array = self.datas
+            self.view.setNeedsDisplay()
+            
+        }
     }
 
 }

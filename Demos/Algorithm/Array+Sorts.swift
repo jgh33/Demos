@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+typealias IsDescending = Bool
 extension Array {
     
     //MARK: --Base Func
@@ -24,43 +24,42 @@ extension Array {
     
     //MARK: --Sort Func
     
-    mutating func selectionF(usingComparator comparator:((Element,Element) -> ComparisonResult), didExchange exchangeCallback:(()->Void)?){
-        if self.count == 0 {
+    mutating func selectionF(usingComparator comparator:((Element,Element) -> IsDescending), didExchange exchangeCallback:(()->Void)?){
+        if count < 2 {
             return
         }
-        for i in 0 ..< (self.count - 1){
-            for j in i + 1 ..< self.count{
-                if comparator(self[i], self[j]) == .orderedDescending  {
-                    exchange(forIndex: i, andIndex: j, didExchange: exchangeCallback)
+        var minIndex = 0
+       
+        for i in 1 ... (count - 1) {
+            minIndex = i - 1
+            for j in i ... (count - 1) {
+                if comparator(self[minIndex], self[j])  {
+                    minIndex = j
                 }
             }
+            exchange(forIndex: i - 1, andIndex: minIndex, didExchange: exchangeCallback)
         }
     }
     
-    mutating func bubbleF(usingComparator comparator:((Element,Element) -> ComparisonResult), didExchange exchangeCallback:(()->Void)?){
-        if self.count == 0 {
+    mutating func bubbleF(usingComparator comparator:((Element,Element) -> IsDescending), didExchange exchangeCallback:(()->Void)?){
+        if count < 2 {
             return
         }
         
-        var len = self.count
-        var flag = true
-        while flag {
-            flag = false
-            for i in 0..<len - 1 {
-                if comparator(self[i], self[i + 1]) == .orderedDescending {
-                    exchange(forIndex: i, andIndex: i + 1, didExchange: exchangeCallback)
-                    flag = true
+        for i in 1 ... (count - 1) {
+            for j in 0 ... (count - 1 - i) {
+                if comparator(self[j], self[j + 1]) {
+                    exchange(forIndex: j, andIndex: j + 1, didExchange: exchangeCallback)
                 }
             }
-            len -= 1
         }
         
     }
     
-    mutating func insertionF(usingComparator comparator:((Element,Element) -> ComparisonResult), didExchange exchangeCallback:(()->Void)?){
-        for i in 1 ..< self.count{
+    mutating func insertionF(usingComparator comparator:((Element,Element) -> IsDescending), didExchange exchangeCallback:(()->Void)?){
+        for i in 1 ... (count - 1) {
             for  j in (0...i - 1).reversed() {
-                if comparator(self[j + 1], self[j]) == .orderedAscending{
+                if comparator(self[j + 1], self[j]) {
                     exchange(forIndex: j + 1, andIndex: j, didExchange: exchangeCallback)
                 }
                 
@@ -68,8 +67,8 @@ extension Array {
         }
     }
     
-    mutating func quickF(usingComparator comparator:((Element,Element) -> ComparisonResult), didExchange exchangeCallback:(()->Void)?){
-        if self.count == 0 {
+    mutating func quickF(usingComparator comparator:((Element,Element) -> IsDescending), didExchange exchangeCallback:(()->Void)?){
+        if self.count < 2 {
             return
         }
         quickSort(withLowIndex: 0, heightIndex: self.count - 1, usingComparator:comparator, didExechange: exchangeCallback)
@@ -79,7 +78,7 @@ extension Array {
         
         
     }
-    private mutating func quickSort(withLowIndex low:Index, heightIndex height:Index, usingComparator comparator:((Element,Element) -> ComparisonResult), didExechange exchangeCallback:(()->Void)?){
+    private mutating func quickSort(withLowIndex low:Index, heightIndex height:Index, usingComparator comparator:((Element,Element) -> IsDescending), didExechange exchangeCallback:(()->Void)?){
         if low  >= height{
             return
         }
@@ -88,12 +87,12 @@ extension Array {
         quickSort(withLowIndex: pivotIndex + 1, heightIndex: height, usingComparator: comparator, didExechange: exchangeCallback)
     }
     
-    private mutating func quickParttition(withLowIndex low:Index, heightIndex height:Index, usingComparator comparator:((Element,Element) -> ComparisonResult), didExechange exchangeCallback:(()->Void)?) -> Int{
+    private mutating func quickParttition(withLowIndex low:Index, heightIndex height:Index, usingComparator comparator:((Element,Element) -> IsDescending), didExechange exchangeCallback:(()->Void)?) -> Int{
         let pivot = self[low]
         var i = low
         var j = height
         while i < j {
-            while i < j && comparator(self[j], pivot) != .orderedAscending{
+            while i < j && comparator(self[j], pivot) {
                 j = j - 1
             }
             if (i < j) {
@@ -103,7 +102,7 @@ extension Array {
             }
             
             /// 略过小于等于pivot的元素
-            while (i < j && comparator(self[i], pivot) != .orderedDescending) {
+            while (i < j && !comparator(self[i], pivot)) {
                 i = i + 1
             }
             if (i < j) {

@@ -10,7 +10,7 @@ import UIKit
 
 let kBarHeightMax = 100
 let kBarHeightMin = 20
-let theTimeInterval = 0.002
+let theTimeInterval = 0.01
 let kBarCount = 100
 
 
@@ -33,7 +33,7 @@ class SortView: UIView {
         
         for (index, value) in array.enumerated() {
             let path = UIBezierPath()
-            let x = edgeDistance + (self.bounds.width - 2 * edgeDistance) * CGFloat(index) / CGFloat(array.count)
+            let x = edgeDistance + (self.bounds.width - 2 * edgeDistance) * CGFloat(index) / CGFloat(array.count - 1)
             path.move(to: CGPoint(x: x, y: y))
             let endPoint = CGPoint(x: x, y: y - CGFloat(value) * (self.bounds.height - upDistance - downDistance) / CGFloat(kBarHeightMax))
             path.addLine(to: endPoint)
