@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let notifiCenter = UNUserNotificationCenter.current()
+        notifiCenter.delegate = self
+        let types = UNAuthorizationOptions(arrayLiteral: [.alert, .sound, .badge])
+        notifiCenter.requestAuthorization(options: types) { (flag, error) in
+            if flag {
+                print("success")
+            } else {
+                print("error")
+            }
+        }
+        
+        
+        UIApplication.shared.registerForRemoteNotifications()
         return true
     }
 
@@ -39,6 +54,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print(url)
+        print(url.scheme!)
+        return true
+    }
+    
+    
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let nsdata = NSData(data: deviceToken)
+        let str = nsdata.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
+        print("token: \(str)")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        print("userInfo: \(userInfo)")
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print("userInfo: \(userInfo)")
+        completionHandler([.sound, .alert])
     }
 
 

@@ -13,7 +13,9 @@ let 动画: (name: String, list: [String]) = ("动画", ["基本动画", "转场
 let 算法: (name: String, list: [String]) = ("算法", ["排序算法", "只能"])
 let 多媒体: (name: String, list: [String]) = ("多媒体", ["AVAudioPlayer", "MPMovie"])
 let 棋牌:  (name: String, list: [String]) = ("棋牌", ["象棋", "五子棋"])
-let sections = [动画, 算法, 多媒体, 棋牌]
+let 加密认证: (name: String, list: [String]) = ("加密认证", ["TouchID / FaceID", "加密算法"])
+let 文件共享: (name: String, list: [String]) = ("文件共享", ["接收", "发送"])
+let sections = [动画, 算法, 多媒体, 棋牌, 加密认证]
 class DemosTableViewController: UITableViewController {
     
     
@@ -91,6 +93,20 @@ class DemosTableViewController: UITableViewController {
                 id = "ChineseChessViewController"
             } else if indexPath.row == 1 {
                 id = "FiveStoneChessViewController"
+            }
+        case 4:
+            name = "Encryption"
+            if indexPath.row == 0 {
+                id = ""
+            } else if indexPath.row == 1 {
+                id = ""
+            }
+        case 5:
+            name = ""
+            if indexPath.row == 0 {
+                id = ""
+            } else if indexPath.row == 1 {
+                id = ""
             }
         default:
             name = "Algorithm"

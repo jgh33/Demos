@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0DA828E2168DFA5F6E9B90AD /* Pods_Demos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 488F8DAA31C533700AC98024 /* Pods_Demos.framework */; };
+		D5121CC121BA4E3400FFD2DA /* Encryption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5121CC021BA4E3400FFD2DA /* Encryption.storyboard */; };
+		D5121CC321BA507200FFD2DA /* AuthID.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5121CC221BA507200FFD2DA /* AuthID.swift */; };
 		D544A4D821B1350200A68D2A /* FiveStoneChessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544A4D721B1350200A68D2A /* FiveStoneChessModel.swift */; };
 		D544A4DA21B13DAA00A68D2A /* FiveStoneChessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D544A4D921B13DAA00A68D2A /* FiveStoneChessViewModel.swift */; };
 		D57195BF2192C27F001936A4 /* OtherAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57195BE2192C27F001936A4 /* OtherAnimationViewController.swift */; };
@@ -53,6 +55,8 @@
 		488F8DAA31C533700AC98024 /* Pods_Demos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7217E46AAB49C59D9812A781 /* Pods-Demos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demos/Pods-Demos.debug.xcconfig"; sourceTree = "<group>"; };
 		9D5EFA589104A568BDC3230F /* Pods-Demos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demos/Pods-Demos.release.xcconfig"; sourceTree = "<group>"; };
+		D5121CC021BA4E3400FFD2DA /* Encryption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Encryption.storyboard; sourceTree = "<group>"; };
+		D5121CC221BA507200FFD2DA /* AuthID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthID.swift; sourceTree = "<group>"; };
 		D544A4D721B1350200A68D2A /* FiveStoneChessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStoneChessModel.swift; sourceTree = "<group>"; };
 		D544A4D921B13DAA00A68D2A /* FiveStoneChessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStoneChessViewModel.swift; sourceTree = "<group>"; };
 		D57195BE2192C27F001936A4 /* OtherAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAnimationViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 		D5E8E66921819B7200A3FE5D /* 黑象.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "黑象.gif"; sourceTree = "<group>"; };
 		D5E8E67B2181B24A00A3FE5D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D5E8E6A92187EF1E00A3FE5D /* FiveStoneChessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStoneChessViewController.swift; sourceTree = "<group>"; };
+		D5F0CF6F21D7808D0088A025 /* Demos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demos.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +128,15 @@
 				488F8DAA31C533700AC98024 /* Pods_Demos.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5121CBF21BA4CC800FFD2DA /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				D5121CC021BA4E3400FFD2DA /* Encryption.storyboard */,
+				D5121CC221BA507200FFD2DA /* AuthID.swift */,
+			);
+			path = Encryption;
 			sourceTree = "<group>";
 		};
 		D590233221912BB6006D4FFC /* Animation */ = {
@@ -157,9 +171,11 @@
 		D5D96E91217FFF80009687BF /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				D5F0CF6F21D7808D0088A025 /* Demos.entitlements */,
 				D5D96E92217FFF80009687BF /* AppDelegate.swift */,
 				D5D96EA421800108009687BF /* DemosTableViewController.swift */,
 				D57E3712218AE44E00059283 /* Const.swift */,
+				D5121CBF21BA4CC800FFD2DA /* Encryption */,
 				D590233221912BB6006D4FFC /* Animation */,
 				D5E8E65121817D1400A3FE5D /* Chess */,
 				D5D96EAF21802FA3009687BF /* AudioVideo */,
@@ -280,6 +296,14 @@
 				TargetAttributes = {
 					D5D96E8E217FFF80009687BF = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -306,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5121CC121BA4E3400FFD2DA /* Encryption.storyboard in Resources */,
 				D5E8E66F21819B7200A3FE5D /* 红帅.gif in Resources */,
 				D5E8E66C21819B7200A3FE5D /* 黑士.gif in Resources */,
 				D5E8E66E21819B7200A3FE5D /* 棋盘.gif in Resources */,
@@ -387,6 +412,7 @@
 				D5D96EB521806865009687BF /* AVAudioPlayerViewController.swift in Sources */,
 				D57E3713218AE44E00059283 /* Const.swift in Sources */,
 				D58835F72199195100126B40 /* TransitionViewController.swift in Sources */,
+				D5121CC321BA507200FFD2DA /* AuthID.swift in Sources */,
 				D5D96E93217FFF80009687BF /* AppDelegate.swift in Sources */,
 				D57E3711218A96A000059283 /* ChineseChessBoardView.swift in Sources */,
 				D544A4D821B1350200A68D2A /* FiveStoneChessModel.swift in Sources */,
@@ -542,6 +568,7 @@
 			baseConfigurationReference = 7217E46AAB49C59D9812A781 /* Pods-Demos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Demos/Demos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U68NQEERZT;
 				INFOPLIST_FILE = Demos/Info.plist;
@@ -562,6 +589,7 @@
 			baseConfigurationReference = 9D5EFA589104A568BDC3230F /* Pods-Demos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Demos/Demos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U68NQEERZT;
 				INFOPLIST_FILE = Demos/Info.plist;
